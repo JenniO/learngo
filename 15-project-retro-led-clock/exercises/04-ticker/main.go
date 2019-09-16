@@ -71,6 +71,7 @@
 //   though.
 // ---------------------------------------------------------
 
+// TODO: Sliding Clock exercise
 package main
 
 import (

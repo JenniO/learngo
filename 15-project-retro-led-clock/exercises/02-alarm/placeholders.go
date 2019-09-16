@@ -93,3 +93,51 @@ var colon = placeholder{
 var digits = [...]placeholder{
 	zero, one, two, three, four, five, six, seven, eight, nine,
 }
+
+var a = placeholder{
+	"███",
+	"█ █",
+	"███",
+	"█ █",
+	"█ █",
+}
+var l = placeholder{
+	"█  ",
+	"█  ",
+	"█  ",
+	"█  ",
+	"███",
+}
+var r = placeholder{
+	"██ ",
+	"█ █",
+	"██ ",
+	"█ █",
+	"█ █",
+}
+
+var m = placeholder{
+	"█ █",
+	"███",
+	"█ █",
+	"█ █",
+	"█ █",
+}
+var bang = placeholder{
+	" █ ",
+	" █ ",
+	" █ ",
+	"   ",
+	" █ ",
+}
+var empty = placeholder{
+	"   ",
+	"   ",
+	"   ",
+	"   ",
+	"   ",
+}
+
+var alarm = [...]placeholder{
+	empty, a, l, a, r, m, bang, empty,
+}
