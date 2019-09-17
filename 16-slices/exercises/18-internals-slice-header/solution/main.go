@@ -14,7 +14,7 @@ import (
 	"unsafe"
 )
 
-const size = 1e7
+const size int = 1e7
 
 func main() {
 	debug.SetGCPercent(-1)
@@ -30,8 +30,8 @@ func main() {
 	passArray(array)
 
 	slice1 := array[:]
-	slice2 := array[1e3:]
-	slice3 := array[1e3:1e4]
+	slice2 := array[1000:]
+	slice3 := array[1000:10000]
 	report("after slicings")
 
 	passSlice(slice3)

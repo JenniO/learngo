@@ -13,27 +13,39 @@ import "fmt"
 func main() {
 	// --- #1 ---
 	// 1. create a new slice named: games
+
+	//var games []string
 	//
 	// 2. print the length and capacity of the games slice
+	//fmt.Printf("Games len: %d, cap:%d", len(games), cap(games))
+
 	//
 	// 3. comment out the games slice
 	//    then declare it as an empty slice
+	//games := []string{}
 	//
 	// 4. print the length and capacity of the games slice
+	//fmt.Printf("Games len: %d, cap:%d\n", len(games), cap(games))
 	//
 	// 5. append the elements: "pacman", "mario", "tetris", "doom"
+	// games = append(games, "pacman", "mario", "tetris", "doom")
 	//
 	// 6. print the length and capacity of the games slice
+	// fmt.Printf("Games len: %d, cap:%d\n", len(games), cap(games))
 	//
 	// 7. comment out everything
 	//
 	// 8. declare the games slice again using a slice literal
 	//    (use the same elements from step 3)
+	games := []string{"pacman", "mario", "tetris", "doom"}
 
 	// --- #2 ---
 	// 1. use a loop from 0 to 4 to slice the games slice, element by element.
-	//
-	// 2. print its length and capacity along the way (in the loop).
+	for i := 0; i <= len(games); i++ {
+		s := games[:i]
+		// 2. print its length and capacity along the way (in the loop).
+		fmt.Printf("Games len: %d, cap:%d\n", len(s), cap(s))
+	}
 
 	fmt.Println()
 	// for ... {
