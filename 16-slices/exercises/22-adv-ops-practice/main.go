@@ -22,8 +22,8 @@ func main() {
 	//     capacity of 5, and print it.
 	//
 	//
-	// ...
-	// s.Show("1st step", names)
+	names := make([]string, 5)
+	s.Show("1st step", names)
 
 	// ########################################################
 	//
@@ -36,8 +36,8 @@ func main() {
 	//     Observe how the slice and its backing array change.
 	//
 	//
-	// ...
-	// s.Show("2nd step", names)
+	names = append(names, "einstein", "tesla", "aristo")
+	s.Show("2nd step", names)
 
 	// ########################################################
 	//
@@ -53,8 +53,9 @@ func main() {
 	//
 	//     So: Overwrite and print the names slice.
 	//
-	// ...
-	// s.Show("3rd step", names)
+	names = make([]string, 0, 5)
+	names = append(names, "einstein", "tesla", "aristo")
+	s.Show("3rd step", names)
 
 	// ########################################################
 	//
@@ -68,11 +69,10 @@ func main() {
 	//
 	//
 	// Array (uncomment):
-	// moreNames := [...]string{"plato", "khayyam", "ptolemy"}
-	//
-	// ...
-	//
-	// s.Show("4th step", names)
+	moreNames := [...]string{"plato", "khayyam", "ptolemy"}
+	copy(names[3:5], moreNames[:2])
+	names = names[:cap(names)]
+	s.Show("4th step", names)
 
 	// ########################################################
 	//
@@ -88,23 +88,28 @@ func main() {
 	//     Print the clone slice before and after the append.
 	//
 	//
-	// ...
-	// s.Show("5th step (before append)", clone)
+	clone := make([]string, 3, 5)
+	//s.Show("names[len(names)-3:]", names[len(names)-3:])
+	copy(clone, names[len(names)-3:])
+	s.Show("5th step (before append)", clone)
 	//
-	// ...
-	// s.Show("5th step (after append)", clone)
+	clone = append(clone, names[:2]...)
+	s.Show("5th step (after append)", clone)
 
 	// ########################################################
 	//
 	// #6: Slice the `clone` slice between 2nd and 4th (inclusive)
 	//     elements into a new slice: `sliced`.
+	sliced := clone[1:4:4]
 	//
 	//     Append "hypatia" to the `sliced`.
+	sliced = append(sliced, "hypathia")
 	//
 	//     Ensure that new backing array allocation "occurs".
 	//
 	//       Change the 3rd element of the `clone` slice
 	//       to "elder".
+	clone[2] = "elder"
 	//
 	//       Doing so should not change any elements of
 	//       the `sliced` slice.
@@ -112,8 +117,7 @@ func main() {
 	//     Print the `clone` and `sliced` slices.
 	//
 	//
-	// ...
-	// s.Show("6th step", clone, sliced)
+	s.Show("6th step", clone, sliced)
 }
 
 //
