@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"sort"
+	"strconv"
 )
 
 // ---------------------------------------------------------
@@ -57,9 +58,11 @@ func main() {
 	sort.Strings(items)
 
 	var data []byte
-	for _, s := range items {
-		data = append(data, s...)
-		data = append(data, '\n')
+
+	for i, s := range items {
+		i++
+		line := strconv.Itoa(i) + ". " + s + "\n"
+		data = append(data, line...)
 	}
 
 	err := ioutil.WriteFile("sorted.txt", data, 0644)

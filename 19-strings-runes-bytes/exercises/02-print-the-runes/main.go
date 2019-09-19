@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // ---------------------------------------------------------
 // EXERCISE: Print the runes
 //
@@ -25,4 +27,8 @@ package main
 
 func main() {
 	const word = "console"
+
+	for _, letter := range word {
+		fmt.Printf("%-5d %-5[1]x %-5[1]b\n", letter)
+	}
 }

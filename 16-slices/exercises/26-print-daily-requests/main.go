@@ -60,20 +60,31 @@ func main() {
 	const N = 3
 
 	// DAILY REQUESTS DATA (8-HOURLY TOTALS PER DAY)
+	// reqs := []int{
+	// 	500, 600, 250, // 1st day: 1350 requests
+	// 	200, 400, 50, // 2nd day: 650 requests
+	// 	900, 800, 600, // 3rd day: 2300 requests
+	// 	750, 250, 100, // 4th day: 1100 requests
+	// 	// grand total: 5400 requests
+	// }
 	reqs := []int{
-		500, 600, 250, // 1st day: 1350 requests
-		200, 400, 50, // 2nd day: 650 requests
-		900, 800, 600, // 3rd day: 2300 requests
-		750, 250, 100, // 4th day: 1100 requests
-		// grand total: 5400 requests
+		500, 600, 250,
+		200, 400, 50,
+		900, 800, 600,
+		750, 250, 100,
+		150, 654, 235,
+		320, 534, 765,
+		121, 876, 285,
+		543, 642,
 	}
-
 	// ================================================
 	// #1: Make a new slice with the exact size needed.
 
-	_ = reqs // remove this when you start
-
-	size := 0 // you need to find the size.
+	// you need to find the size.
+	size := len(reqs) / N
+	if len(reqs)%N != 0 {
+		size++
+	}
 	daily := make([][]int, 0, size)
 
 	// ================================================
@@ -89,7 +100,13 @@ func main() {
 	//  [750, 250, 100]
 	// ]
 
-	_ = daily // remove this when you start
+	for i := 0; i < cap(daily); i++ {
+		start, end := i*3, i*3+3
+		if end > len(reqs) {
+			end = len(reqs)
+		}
+		daily = append(daily, reqs[start:end])
+	}
 
 	// ================================================
 	// #3: Print the results
@@ -101,6 +118,18 @@ func main() {
 	// Loop over the daily slice and its inner slices to find
 	// the daily totals and the grand total.
 	// ...
+	grand := 0
+	for i, day := range daily {
+		total := 0
 
+		for _, r := range day {
+			fmt.Printf("%-10d%-10d\n", i+1, r)
+			total += r
+		}
+
+		fmt.Printf("%10s%-10d\n\n", "TOTAL: ", total)
+		grand += total
+	}
+	fmt.Printf("%10s%-10d\n", "GRAND: ", grand)
 	// ================================================
 }

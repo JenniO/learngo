@@ -14,32 +14,6 @@ import (
 	"github.com/inancgumus/screen"
 )
 
-// ---------------------------------------------------------
-// EXERCISE: Find the Bug
-//
-//  As I've annotated in the lectures, there is a bug
-//  in this code. Please find the bug and fix it.
-//
-//
-// HINT #1
-//
-//  💀 Read this only if you get stuck.
-//
-//  Print the width*height and the capacity of the drawing buffer
-//  after a single drawing loop ends. You might be surprised.
-//
-//
-// HINT #2
-//
-//  💀 Read this only if you get stuck.
-//
-//  The bug is in the drawing buffer. It doesn't include the
-//  newline and space characters when creating the buffer. So
-//  the buffer is not large enough to hold all the characters.
-//  So new backing arrays are getting allocated.
-//
-// ---------------------------------------------------------
-
 func main() {
 	const (
 		width  = 50
@@ -50,7 +24,6 @@ func main() {
 
 		maxFrames = 1200
 		speed     = time.Second / 20
-		bufflen   = (width*2 + 1) * height
 	)
 
 	var (
@@ -67,7 +40,7 @@ func main() {
 	}
 
 	// create a drawing buffer
-	buf := make([]rune, 0, bufflen)
+	buf := make([]rune, 0, width*height)
 
 	// clear the screen once
 	screen.Clear()

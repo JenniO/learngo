@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/inancgumus/learngo/16-slices/exercises/24-fix-the-memory-leak/api"
+	"github.com/JenniO/learngo/16-slices/exercises/24-fix-the-memory-leak/api"
 )
 
 // ---------------------------------------------------------
@@ -110,6 +110,7 @@ func main() {
 	// ✪ ONLY CHANGE THE CODE IN THIS AREA ✪
 
 	last10 := millions[len(millions)-10:]
+	millions = []int{1}
 
 	fmt.Printf("\nLast 10 elements: %d\n\n", last10)
 

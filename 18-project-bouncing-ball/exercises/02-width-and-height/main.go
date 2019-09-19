@@ -99,8 +99,8 @@ import (
 
 func main() {
 	const (
-		width  = 50
-		height = 10
+		//width  = 50
+		//height = 10
 
 		cellEmpty = ' '
 		cellBall  = '⚾'
@@ -112,10 +112,13 @@ func main() {
 		//
 		// *2 for extra spaces
 		// +1 for newlines
-		bufLen = (width*2 + 1) * height
 	)
 
+	//width, height, err := terminal.GetSize(int(os.Stdout.Fd()))
+	width, height := screen.Size()
+
 	var (
+		bufLen = (width*2 + 1) * height
 		px, py int    // ball position
 		vx, vy = 1, 1 // velocities
 

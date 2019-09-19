@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"unicode/utf8"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Rune Manipulator
 //
@@ -22,6 +27,10 @@ func main() {
 
 	// Print the byte and rune length of the strings
 	// Hint: Use len and utf8.RuneCountInString
+	for _, s := range strings {
+		fmt.Printf("Byte length: %-3d, rune length: %-3d\n", len(s),
+			utf8.RuneCountInString(s))
+	}
 
 	// Print the bytes of the strings in hexadecimal
 	// Hint: Use % x verb
