@@ -20,23 +20,22 @@ type book struct {
 }
 
 func (b book) print() {
-	p := format(b.published)
-	fmt.Printf("%-15s: %s\n", b.title, b.price.string())
+	p := " - " + format(b.published)
+	fmt.Printf("%-15s: %5s %s\n", b.title, b.price.string(), p)
 }
 
 func format(v interface{}) string {
-	if v == nil {
+	var t int
+	switch v := v.(type) {
+	case int:
+		t = v
+	case string:
+		t, _ = strconv.Atoi(v)
+	default:
 		return "unknown"
 	}
-
-	var t int
-	if v, ok := v.(int); ok {
-		t = v
-	}
-	if v, ok := v.(string); ok {
-		t, _ = strconv.Atoi(v)
-	}
+	const layout = "2006-01"
 
 	u := time.Unix(int64(t), 0)
-	return u.String()
+	return u.Format(layout)
 }

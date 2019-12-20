@@ -21,6 +21,6 @@ func main() {
 	store.discount(0.8)
 	store.print()
 
-	var p printer
+	//var p printer
 
 }
